@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <main>
+        <div class="menu">
+
+            <h3>Menu</h3>
+        </div>
+        <div class="container">
+            <div class="header">
+                <h3>Header</h3>
+            </div>
+            <div class="contentMain">
+                <div class="content">
+                    <h3>Content</h3>
+                    @RenderBody()
+                </div>
+                <div class="sideBar">
+                    @if (IsSectionDefined("sideBar"))
+                    {
+                        @RenderSection("sideBar")
+                    }
+                    else
+                    {
+                        <h2>Zona Sidebar</h2>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

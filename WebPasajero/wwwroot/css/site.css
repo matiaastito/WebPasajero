@@ -1,0 +1,50 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.menu, .container, .header, .contentMain, .content, .sideBar{
+    border: 1px solid red;
+}
+body {
+    overflow: hidden;
+}
+
+main{
+    display: flex;
+    width: 100vw;
+    text-align:center;
+}
+
+
+
+.menu{
+    width: 20%;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.contentMain {
+    display: flex;
+
+}
+
+.content{
+    width:80%;
+    height:100vh;
+}
+
+.sideBar {
+    width: 20%;
+}
+
+.header{
+    padding: 40px;
+}
