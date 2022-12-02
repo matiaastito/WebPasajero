@@ -42,22 +42,15 @@ namespace WebPasajero.Controllers
         public IActionResult ListarPorFechaNacimiento(DateTime fechaNacimiento)
         {
             IEnumerable<Pasajero> listXFecha = BuscarXFecha(fechaNacimiento);
-            if(listXFecha != null)
-            {
-                return View("ListXFecha", listXFecha);
-            }
-            return NotFound();
+            return View("Index", listXFecha);
+
         }
 
         [HttpGet]
         public IActionResult ListarPorCiudad(string Ciudad)
         {
             IEnumerable<Pasajero> listXCiudad = BuscarXCiudad(Ciudad);
-            if (listXCiudad != null)
-            {
-                return View("ListXCiudad", listXCiudad);
-            }
-            return NotFound();
+            return View("Index", listXCiudad);
         }
 
         #region metodos nonAction
@@ -66,20 +59,29 @@ namespace WebPasajero.Controllers
 
         public IEnumerable<Pasajero> BuscarXFecha(DateTime FechaNacimiento)
         {
-            IEnumerable<Pasajero> ListPasajeros = (from p in _context.Pasajeros
-                                                   where DateTime.Compare(p.FechaNacimiento, FechaNacimiento)==0
-                                                   select p).ToList();
-            return ListPasajeros;
+            if (FechaNacimiento != null)
+            {
+                IEnumerable<Pasajero> ListPasajeros = (from p in _context.Pasajeros
+                                                       where DateTime.Compare(p.FechaNacimiento, FechaNacimiento) == 0
+                                                       select p).ToList();
+                return ListPasajeros;
+            }
+            return Enumerable.Empty<Pasajero>();
         }
 
         [NonAction]
 
         public IEnumerable<Pasajero> BuscarXCiudad(string Ciudad)
         {
-            IEnumerable<Pasajero> ListPasajeros = (from p in _context.Pasajeros
-                                                   where p.Ciudad.ToLower() == Ciudad.ToLower()
-                                                   select p).ToList();
-            return ListPasajeros;
+            if (Ciudad != null)
+            {
+                IEnumerable<Pasajero> ListPasajeros = (from p in _context.Pasajeros
+                                                       where p.Ciudad.ToLower() == Ciudad.ToLower()
+                                                       select p).ToList();
+                return ListPasajeros;
+            }
+            else
+                return Enumerable.Empty<Pasajero>();
         }
         #endregion
     }

@@ -19,7 +19,7 @@ namespace WebPasajero.Data
                    Nombre = "Matias",
                    Apellido = "Tito",
                    FechaNacimiento = new DateTime(1996,10,27),
-                   Ciudad = "1234 Calle Falsa"
+                   Ciudad = "Mar del Plata"
                },
                new Pasajero
                {
@@ -27,7 +27,7 @@ namespace WebPasajero.Data
                    Nombre = "Tara",
                    Apellido = "Brewer",
                    FechaNacimiento = new DateTime(2000, 1, 1),
-                   Ciudad = "317 Long Street"
+                   Ciudad = "Chaco"
                });
 
         }

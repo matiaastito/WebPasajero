@@ -1,7 +1,56 @@
-﻿
+﻿@model IEnumerable<WebPasajero.Models.Pasajero>
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<div>
+    <a asp-action="Create" asp-controller="Pasajero">Nuevo Pasajero</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaNacimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ciudad)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ciudad)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p>
+    <form asp-action="ListarPorFechaNacimiento" asp-controller="Pasajero" method="get">Buscar por fecha:<input type="date" class="btn btn-default" name="fechaNacimiento" /><p><button>Listar</button></p></form>
+</p>
+<p>
+    <form asp-action="ListarPorCiudad" asp-controller="Pasajero" method="get">Buscar por ciudad:<input type="text" class="btn btn-default" name="Ciudad" /><p><button>Listar</button></p></form>
+</p>
+<p>
+    <form asp-action="Index" asp-controller="Pasajero">Regresar a la Lista<p><button>Listar</button></p></form>
+</p>
